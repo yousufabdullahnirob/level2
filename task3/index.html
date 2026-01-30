@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StellarWeather | Live Insights</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Unpkg for Lucide icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header animate-fade-in">
+            <div class="logo-container">
+                <i data-lucide="cloud-lightning" class="logo-icon"></i>
+            </div>
+            <h1 class="app-title">
+                Stellar<span class="highlight">Weather</span>
+            </h1>
+            <p class="subtitle">Live next-generation insights</p>
+        </header>
+
+        <form id="searchForm" class="search-bar glass animate-fade-in">
+            <i data-lucide="search" class="search-icon"></i>
+            <input type="text" id="cityInput" placeholder="Search for a city..." autocomplete="off">
+            <button type="button" id="clearBtn" class="clear-btn hidden">
+                <i data-lucide="x"></i>
+            </button>
+            <button type="submit" class="search-btn">Search</button>
+        </form>
+
+        <div id="loading" class="loading-container hidden">
+            <div class="spinner"></div>
+        </div>
+
+        <div id="error" class="error-container glass animate-fade-in hidden">
+            <p id="errorMessage" class="error-text"></p>
+            <button id="goBackBtn" class="go-back-link">Go back to Dhaka</button>
+        </div>
+
+        <main id="weatherContent" class="weather-content hidden">
+            <!-- Weather Card -->
+            <div class="glass glass-card weather-card animate-fade-in delay-100">
+                <div class="card-header">
+                    <h2 id="cityName" class="city-name"></h2>
+                    <p id="dateText" class="date-text"></p>
+                </div>
+                
+                <div class="card-body">
+                    <div id="weatherIconContainer" class="weather-icon-wrapper">
+                        <!-- Icon injected via JS -->
+                    </div>
+                    <p id="conditionText" class="condition-text"></p>
+                </div>
+
+                <div class="card-footer">
+                    <span id="tempValue" class="temp-value"></span>
+                    <p id="feelsLikeText" class="feels-like"></p>
+                </div>
+            </div>
+
+            <!-- Weather Details Grid -->
+            <div class="details-grid">
+                <!-- Wind -->
+                <div class="glass glass-card detail-item animate-fade-in delay-200">
+                    <div class="detail-icon-box">
+                        <i data-lucide="wind" class="detail-icon"></i>
+                    </div>
+                    <span class="detail-label">Wind Speed</span>
+                    <span class="detail-value">
+                        <span id="windSpeed"></span><span class="unit">km/h</span>
+                    </span>
+                </div>
+
+                <!-- Humidity -->
+                <div class="glass glass-card detail-item animate-fade-in delay-200">
+                    <div class="detail-icon-box">
+                        <i data-lucide="droplets" class="detail-icon"></i>
+                    </div>
+                    <span class="detail-label">Humidity</span>
+                    <span class="detail-value">
+                        <span id="humidity"></span><span class="unit">%</span>
+                    </span>
+                </div>
+
+                <!-- Pressure -->
+                <div class="glass glass-card detail-item animate-fade-in delay-300">
+                    <div class="detail-icon-box">
+                        <i data-lucide="gauge" class="detail-icon"></i>
+                    </div>
+                    <span class="detail-label">Pressure</span>
+                    <span class="detail-value">
+                        <span id="pressure"></span><span class="unit">hPa</span>
+                    </span>
+                </div>
+
+                <!-- Visibility -->
+                <div class="glass glass-card detail-item animate-fade-in delay-300">
+                    <div class="detail-icon-box">
+                        <i data-lucide="eye" class="detail-icon"></i>
+                    </div>
+                    <span class="detail-label">Visibility</span>
+                    <span class="detail-value">
+                        <span id="visibility"></span><span class="unit">km</span>
+                    </span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer animate-fade-in delay-300">
+            <p>© 2026 StellarWeather Dashboard. Powered by Real-Time Data.</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
